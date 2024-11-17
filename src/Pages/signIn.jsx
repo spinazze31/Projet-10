@@ -1,6 +1,6 @@
-import Header from "../Header/header";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Api } from "../api/api";
 
 function SignIn() {
   const [username, setUsername] = useState("");
@@ -12,18 +12,13 @@ function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const credentials = { username, password };
-    const response = await fetch("http://localhost:3001/api/v1/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
-    if (response.ok) {
-      const data = await response.json();
-      setToken(data.token);
-      navigate("/user");
-    } else setError("Erreur de connection");
+
+    const data = await Api(credentials);
+
+    setToken(data.token);
+    navigate("/user");
+
+    console.log(data);
   };
 
   return (
@@ -57,6 +52,7 @@ function SignIn() {
             </div>
 
             <button className="sign-in-button">Sign In</button>
+            <p className="error_connexion"></p>
           </form>
         </section>
       </main>
