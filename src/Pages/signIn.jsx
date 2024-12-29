@@ -1,25 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Api } from "../api/api";
+import { useDispatch, useSelector } from "react-redux";
+import { userConnection } from "../Reducer/reducer";
 
 function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { token, error } = useSelector((state) => state.user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const credentials = { username, password };
 
-    const data = await Api(credentials);
-
-    setToken(data.token);
-    navigate("/user");
-
-    console.log(data);
+    dispatch(userConnection(credentials));
   };
+
+  useEffect(() => {
+    if (token != null) {
+      navigate("/user");
+    }
+  }, [token]);
 
   return (
     <>
@@ -52,7 +55,7 @@ function SignIn() {
             </div>
 
             <button className="sign-in-button">Sign In</button>
-            <p className="error_connexion"></p>
+            <p>{error}</p>
           </form>
         </section>
       </main>

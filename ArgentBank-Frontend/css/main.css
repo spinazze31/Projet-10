@@ -214,11 +214,6 @@ body {
   font-size: 1.2rem;
 }
 
-.error_connexion {
-  margin-top: 10px;
-  color: red;
-}
-
 .footer {
   display: flex;
   justify-content: center;

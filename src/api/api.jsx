@@ -1,6 +1,4 @@
-const errorConnexion = document.querySelector(".error_connexion");
-
-export const Api = async (credentials) => {
+export const api = async (credentials) => {
   const response = await fetch("http://localhost:3001/api/v1/user/login", {
     method: "POST",
     headers: {
@@ -9,9 +7,6 @@ export const Api = async (credentials) => {
     body: JSON.stringify(credentials),
   });
   const data = await response.json();
-  if (data) {
-    return data;
-  } else {
-    errorConnexion.innerText = "Erreur de connection";
-  }
+  console.log(data.body.token);
+  return data.body.token;
 };
