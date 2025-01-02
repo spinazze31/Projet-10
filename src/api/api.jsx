@@ -7,6 +7,16 @@ export const api = async (credentials) => {
     body: JSON.stringify(credentials),
   });
   const data = await response.json();
-  console.log(data.body.token);
   return data.body.token;
+};
+
+export const getProfile = async (token) => {
+  const response = await fetch("http://localhost:3001/api/v1/user/profile", {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+  const data = await response.json();
+  console.log(data);
+  return data;
 };

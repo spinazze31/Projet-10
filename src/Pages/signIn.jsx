@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userConnection } from "../Reducer/reducer";
+import { getProfile } from "../api/api";
 
 function SignIn() {
   const [username, setUsername] = useState("");
@@ -16,11 +17,17 @@ function SignIn() {
     const credentials = { username, password };
 
     dispatch(userConnection(credentials));
+    console.log(token);
   };
 
   useEffect(() => {
     if (token != null) {
       navigate("/user");
+      const fetchProfile = async () => {
+        const profile = await getProfile(token);
+        console.log(profile);
+      };
+      fetchProfile();
     }
   }, [token]);
 
@@ -55,7 +62,7 @@ function SignIn() {
             </div>
 
             <button className="sign-in-button">Sign In</button>
-            <p>{error}</p>
+            <p className="error_connection">{error}</p>
           </form>
         </section>
       </main>
