@@ -9,7 +9,7 @@ export const userConnection = createAsyncThunk(
       const token = await api(credentials);
       return token;
     } catch (error) {
-      const errorMessage = "Identifiant ou mot de passe incorrect";
+      const errorMessage = "incorrect username or password";
       return rejectWithValue(errorMessage);
     }
   }

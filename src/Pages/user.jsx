@@ -2,10 +2,11 @@ import Account from "../account/account";
 import { useState } from "react";
 import { putProfile } from "../api/api";
 import { useSelector } from "react-redux";
+import ConnectedUserProfile from "../Profile/connected-User-Profile";
 
 function User() {
   const [isOpen, setIsopen] = useState(true);
-  const [userName, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -24,11 +25,7 @@ function User() {
       <main className="main-bg">
         {isOpen ? (
           <div className="header">
-            <h1>
-              Welcome back
-              <br />
-              Tony Jarvis!
-            </h1>
+            <ConnectedUserProfile />
             <button onClick={() => setIsopen(false)} className="edit-button">
               Edit Name
             </button>
@@ -41,7 +38,7 @@ function User() {
                 User name :
               </label>
               <input
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setUserName(e.target.value)}
                 type="text"
                 name="user_name"
                 id="user_name"

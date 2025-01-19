@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "../../ArgentBank-Frontend/img/argentBankLogo.png";
-import { logout } from "../Reducer/reducer";
+import { logout } from "../Reducer/login-reducer";
 
 function Header() {
   const { token } = useSelector((state) => state.user);

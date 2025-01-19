@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userConnection } from "../Reducer/reducer";
+import { userConnection } from "../Reducer/login-reducer";
 import { getProfile } from "../api/api";
 
 function SignIn() {
