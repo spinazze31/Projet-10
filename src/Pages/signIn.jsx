@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userConnection } from "../Reducer/login-reducer";
-import { getProfile } from "../api/api";
+import { userProfile } from "../Reducer/profile-reducer";
 
 function SignIn() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const credentials = { username, password };
+    const credentials = { email, password };
 
     dispatch(userConnection(credentials));
     console.log(token);
@@ -24,8 +24,7 @@ function SignIn() {
     if (token != null) {
       navigate("/user");
       const fetchProfile = async () => {
-        const profile = await getProfile(token);
-        console.log(profile);
+        dispatch(userProfile(token));
       };
       fetchProfile();
     }
@@ -39,12 +38,12 @@ function SignIn() {
           <h1>Sign In</h1>
           <form onSubmit={handleSubmit}>
             <div className="input-wrapper">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">Email</label>
               <input
                 type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="input-wrapper">

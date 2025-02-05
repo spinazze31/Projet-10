@@ -17,17 +17,18 @@ export const getProfile = async (token) => {
     },
   });
   const data = await response.json();
-  return data;
+  console.log(data.body);
+  return data.body;
 };
 
-export const putProfile = async (token, userInformations) => {
+export const putProfile = async (userInformation, token) => {
   const response = await fetch("http://localhost:3001/api/v1/user/profile", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token,
     },
-    body: JSON.stringify(userInformations),
+    body: JSON.stringify(userInformation),
   });
   const data = await response.json();
   console.log(data);

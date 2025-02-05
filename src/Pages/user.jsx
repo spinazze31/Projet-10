@@ -1,90 +1,20 @@
 import Account from "../account/account";
 import { useState } from "react";
-import { putProfile } from "../api/api";
-import { useSelector } from "react-redux";
 import ConnectedUserProfile from "../Profile/connected-User-Profile";
+import ModificationProfile from "../Profile/modification-profile";
 
 function User() {
   const [isOpen, setIsopen] = useState(true);
-  const [userName, setUserName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
 
-  const { token } = useSelector((state) => state.user);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const userInformations = { userName, firstName, lastName };
-    const buttonType = e.target.name;
-    if (buttonType === "cancelButton") {
-      setIsopen(true);
-    } else putProfile(userInformations, token);
-  };
   return (
     <>
       <main className="main-bg">
         {isOpen ? (
           <div className="header">
-            <ConnectedUserProfile />
-            <button onClick={() => setIsopen(false)} className="edit-button">
-              Edit Name
-            </button>
+            <ConnectedUserProfile onSuccess={() => setIsopen(false)} />
           </div>
         ) : (
-          <form className="form_container">
-            <h2 className="form_container-title"> Edit user info</h2>
-            <div className="form_input">
-              <label htmlFor="user_name" className="form_title">
-                User name :
-              </label>
-              <input
-                onChange={(e) => setUserName(e.target.value)}
-                type="text"
-                name="user_name"
-                id="user_name"
-              />
-            </div>
-            <div className="form_input">
-              <label htmlFor="first_name" className="form_title">
-                First name :
-              </label>
-              <input
-                onChange={(e) => setFirstName(e.target.value)}
-                type="text"
-                name="first_name"
-                id="first_name"
-              />
-            </div>
-            <div className="form_input">
-              <label htmlFor="last_name" className="form_title">
-                Last name :
-              </label>
-              <input
-                onChange={(e) => setLastName(e.target.value)}
-                type="text"
-                name="last_name"
-                id="last_name"
-              />
-            </div>
-            <div className="edit_button-container">
-              <button
-                onSubmit={handleSubmit}
-                type="submit"
-                name="saveButton"
-                className="edit-button button_user"
-              >
-                Save
-              </button>
-              <button
-                onClick={handleSubmit}
-                type="button"
-                name="cancelButton"
-                className="edit-button button_user"
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
+          <ModificationProfile onSuccess={() => setIsopen(true)} />
         )}
         <h2 className="sr-only">Accounts</h2>
         <Account

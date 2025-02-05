@@ -5,6 +5,7 @@ import { logout } from "../Reducer/login-reducer";
 
 function Header() {
   const { token } = useSelector((state) => state.user);
+  const { userName } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
   return (
@@ -20,11 +21,22 @@ function Header() {
         </Link>
         <div>
           <Link to="/sign-in" className="main-nav-item">
-            <i className="fa fa-user-circle"></i>
             {token !== null ? (
-              <p onClick={() => dispatch(logout())}>Sign out</p>
+              <>
+                <span className="main-nav_username">{userName}</span>
+                <i className="fa fa-user-circle"></i>
+                <p
+                  className="main-nav_logout"
+                  onClick={() => dispatch(logout())}
+                >
+                  Sign out
+                </p>
+              </>
             ) : (
-              <p>Sign in</p>
+              <>
+                <i className="fa fa-user-circle"></i>
+                <p>Sign in</p>
+              </>
             )}
           </Link>
         </div>

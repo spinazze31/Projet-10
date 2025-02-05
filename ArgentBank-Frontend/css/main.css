@@ -108,6 +108,7 @@ body {
   align-items: center;
   justify-content: center;
   padding-right: 5px;
+  cursor: default;
 }
 
 .main-nav a.router-link-exact-active {
@@ -118,9 +119,16 @@ body {
   display: flex;
   text-decoration: none;
   margin-right: 0.5rem;
+  gap: 0.63rem;
 }
 
-.main-nav-item:hover {
+.main-nav_username {
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+
+.main-nav_logout:hover {
   text-decoration: underline;
 }
 
@@ -135,7 +143,7 @@ body {
 }
 
 .hero {
-  background-image: url("../img/bank-tree.jpeg");
+  background-image: url("../img/bank-tree-compresse.jpeg");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -272,6 +280,9 @@ body {
   align-items: center;
 }
 
+.form_background-color {
+  background-color: #bfadad;
+}
 .input-remember {
   display: flex;
 }

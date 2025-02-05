@@ -5,11 +5,6 @@ import { profileSlice } from "../Reducer/profile-reducer";
 export const store = configureStore({
   reducer: {
     user: userSlice.reducer,
-  },
-});
-
-export const profileStore = configureStore({
-  reducer: {
     profile: profileSlice.reducer,
   },
 });

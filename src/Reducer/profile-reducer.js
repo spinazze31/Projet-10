@@ -3,10 +3,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getProfile } from "../api/api";
 
 export const userProfile = createAsyncThunk(
-  "profile/login",
-  async ({ rejectWithValue }) => {
+  "auth/profile",
+  async (token, { rejectWithValue }) => {
     try {
-      const profile = await getProfile();
+      const profile = await getProfile(token);
       return profile;
     } catch (error) {
       const errorMessage = "server inaccessible";
@@ -19,6 +19,7 @@ export const profileSlice = createSlice({
   name: "profile",
   initialState: {
     loading: false,
+    userName: null,
     firstName: null,
     lastName: null,
     error: null,
@@ -33,8 +34,9 @@ export const profileSlice = createSlice({
       })
       .addCase(userProfile.fulfilled, (state, action) => {
         state.loading = false;
-        state.firstName = action.payload;
-        state.lastName = action.payload;
+        state.userName = action.payload.userName;
+        state.firstName = action.payload.firstName;
+        state.lastName = action.payload.lastName;
         state.error = null;
       })
       .addCase(userProfile.rejected, (state, action) => {

@@ -1,4 +1,3 @@
-import Header from "../Header/header";
 import Banner from "../Banner/banner";
 import Feature from "../Feature/feature";
 

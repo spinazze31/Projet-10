@@ -1,0 +1,122 @@
+swagger:
+  info:
+    title: Bank Argent API documentation
+    description: Contains all available API endpoints in this codebase for transactions
+    version: "1.0.0"
+    host: localhost:3001
+    basePath: /api/v1
+    schemes:
+      - http
+  paths:
+    /accounts:
+      get:
+        tags:
+          - User Accounts
+        summary: accounts
+        description: API for account recovery
+        security:
+          - Bearer: []
+        produces:
+          - application/json
+        responses:
+          "200":
+            description: accounts successfully recovered
+          "500":
+            description: Internal Server Error
+        securityDefinitions:
+          Bearer:
+          type: apiKey
+          name: Authorization
+          in: header
+
+    /accounts/{accountName}:
+      get:
+        tags:
+          - User Account
+        summary: account transactions
+        description: API for recovering account transactions
+        security:
+          - Bearer: []
+        produces:
+          - application/json
+        responses:
+          "200":
+            description: transactions successfully recovered
+          "500":
+            description: Internal Server Error
+        securityDefinitions:
+          Bearer:
+          type: apiKey
+          name: Authorization
+          in: header
+
+    /accounts/{accountName}/{transactionId}:
+      post:
+        tags:
+          - User Account transactions
+        summary: account transactions
+        description: API for transactions description
+        parameters:
+          - in: body
+          name: body
+          description: Comment Payload
+          required: true
+        security:
+          - Bearer: []
+        produces:
+          - application/json
+        responses:
+          "200":
+            description: comment added successfully
+          "500":
+            description: Internal Server Error
+        securityDefinitions:
+          Bearer:
+          type: apiKey
+          name: Authorization
+          in: header
+
+      put: 
+        tags:
+          - User Account transactions
+        summary: account transactions
+        description: API to modify transaction description
+        parameters:
+          - in: body
+          name: body
+          description: Comment Payload
+          required: true
+        security:
+          - Bearer: []
+        produces:
+          - application/json
+        responses:
+          "200":
+            description: comment edited successfully
+          "500":
+            description: Internal Server Error
+        securityDefinitions:
+          Bearer:
+          type: apiKey
+          name: Authorization
+          in: header
+
+      delete: 
+        tags:
+          - User Account transactions
+        summary: account transactions
+        description: API to delete transaction description
+        security:
+          - Bearer: []
+        produces:
+          - application/json
+        responses:
+          "200":
+            description: comment deleted successfully
+          "500":
+            description: Internal Server Error
+        securityDefinitions:
+          Bearer:
+          type: apiKey
+          name: Authorization
+          in: header
