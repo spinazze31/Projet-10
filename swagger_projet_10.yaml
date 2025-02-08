@@ -8,7 +8,7 @@ swagger:
     schemes:
       - http
   paths:
-    /accounts:
+    /transactions:
       get:
         tags:
           - User Accounts
@@ -29,7 +29,7 @@ swagger:
           name: Authorization
           in: header
 
-    /accounts/{accountName}:
+    /transactions:
       get:
         tags:
           - User Account
@@ -50,7 +50,7 @@ swagger:
           name: Authorization
           in: header
 
-    /accounts/{accountName}/{transactionId}:
+    /transaction:
       post:
         tags:
           - User Account transactions
@@ -76,6 +76,7 @@ swagger:
           name: Authorization
           in: header
 
+    /transaction/{transactionId}:
       put: 
         tags:
           - User Account transactions

@@ -17,7 +17,6 @@ export const getProfile = async (token) => {
     },
   });
   const data = await response.json();
-  console.log(data.body);
   return data.body;
 };
 
@@ -31,6 +30,5 @@ export const putProfile = async (userInformation, token) => {
     body: JSON.stringify(userInformation),
   });
   const data = await response.json();
-  console.log(data);
   return data;
 };

@@ -36,7 +36,6 @@ function ModificationProfile({ onSuccess }) {
           />
         </div>
         <div className="form_input">
-          +
           <label htmlFor="first_name" className="form_title">
             First name :
           </label>
