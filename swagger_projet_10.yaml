@@ -11,27 +11,6 @@ swagger:
     /transactions:
       get:
         tags:
-          - User Accounts
-        summary: accounts
-        description: API for account recovery
-        security:
-          - Bearer: []
-        produces:
-          - application/json
-        responses:
-          "200":
-            description: accounts successfully recovered
-          "500":
-            description: Internal Server Error
-        securityDefinitions:
-          Bearer:
-          type: apiKey
-          name: Authorization
-          in: header
-
-    /transactions:
-      get:
-        tags:
           - User Account
         summary: account transactions
         description: API for recovering account transactions
@@ -58,9 +37,9 @@ swagger:
         description: API for transactions description
         parameters:
           - in: body
-          name: body
-          description: Comment Payload
-          required: true
+        name: body
+        description: Comment Payload
+        required: true
         security:
           - Bearer: []
         produces:
@@ -84,9 +63,9 @@ swagger:
         description: API to modify transaction description
         parameters:
           - in: body
-          name: body
-          description: Comment Payload
-          required: true
+        name: body
+        description: Comment Payload
+        required: true
         security:
           - Bearer: []
         produces:
