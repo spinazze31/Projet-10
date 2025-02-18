@@ -11,7 +11,7 @@ function Home() {
           <Feature
             title="You are our #1 priority"
             description="Need to talk to a representative? You can get in touch through our
-    24/7 chat or through a phone call in less than 5 minutes."
+            24/7 chat or through a phone call in less than 5 minutes."
             source="../../ArgentBank-Frontend/img/icon-chat.png"
           />
           <Feature

@@ -17,7 +17,6 @@ function SignIn() {
     const credentials = { email, password };
 
     dispatch(userConnection(credentials));
-    console.log(token);
   };
 
   useEffect(() => {
