@@ -55,7 +55,7 @@ swagger:
           name: Authorization
           in: header
 
-    /transaction/{transactionId}:
+    /transactions/{transactionId}:
       put: 
         tags:
           - User Account transactions
