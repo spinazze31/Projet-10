@@ -107,8 +107,6 @@ paths:
         - User Module
       summary: account transactions
       description: API for recovering account transactions
-      schema:
-        $ref: "#/definitions/Transactions"
       security:
         - Bearer: []
       produces:
@@ -116,8 +114,6 @@ paths:
       responses:
         "200":
           description: transactions successfully recovered
-          schema:
-            $ref: "#/definitions/ApiResponse"
         "500":
           description: Internal Server Error
       securityDefinitions:
