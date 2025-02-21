@@ -101,68 +101,14 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-securityDefinitions:
-  Bearer:
-    type: apiKey
-    name: Authorization
-    in: header
-definitions:
-  User:
-    properties:
-      email:
-        type: string
-        description: user email
-      password:
-        type: string
-        description: user password
-      firstName:
-        type: string
-        description: user first name
-      lastName:
-        type: string
-        description: user last name
-      userName:
-        type: string
-        description: user public name
-  Login:
-    properties:
-      email:
-        type: string
-        description: user email
-      password:
-        type: string
-        description: user password
-  ApiResponse:
-    type: object
-    properties:
-      status:
-        type: integer
-      message:
-        type: string
-      body:
-        type: object
-        properties:
-          id:
-            type: string
-          email:
-            type: string
-  LoginResponse:
-    type: object
-    properties:
-      token:
-        type: string
-  UserProfile:
-    type: object
-    properties:
-      userName:
-        type: string
-
   /transactions:
     get:
       tags:
-        - User Account
+        - User Module
       summary: account transactions
       description: API for recovering account transactions
+      schema:
+        $ref: "#/definitions/Transactions"
       security:
         - Bearer: []
       produces:
@@ -170,6 +116,8 @@ definitions:
       responses:
         "200":
           description: transactions successfully recovered
+          schema:
+            $ref: "#/definitions/ApiResponse"
         "500":
           description: Internal Server Error
       securityDefinitions:
@@ -246,3 +194,62 @@ definitions:
         type: apiKey
         name: Authorization
         in: header
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  User:
+    properties:
+      email:
+        type: string
+        description: user email
+      password:
+        type: string
+        description: user password
+      firstName:
+        type: string
+        description: user first name
+      lastName:
+        type: string
+        description: user last name
+      userName:
+        type: string
+        description: user public name
+  Login:
+    properties:
+      email:
+        type: string
+        description: user email
+      password:
+        type: string
+        description: user password
+  ApiResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      body:
+        type: object
+        properties:
+          id:
+            type: string
+          email:
+            type: string
+  LoginResponse:
+    type: object
+    properties:
+      token:
+        type: string
+  UserProfile:
+    type: object
+    properties:
+      userName:
+        type: string
+  Transactions:
+    type: object
+  TransactionId:
+    type: string
